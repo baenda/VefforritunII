@@ -3,13 +3,13 @@ import { getCollection } from './db.mjs';
 
 const productDB = getCollection("Products")
 
-function validateProduct(user){
-	assert(user.name, "user has to have a name")
-	assert(user.shortDescription, "user has to have a shortDescription")
-	assert(user.description, "user has to have a description")
-	assert(user.category, "user has to have a category")
-	assert(user.price, "user has to have a price")
-	assert(user.image, "user has to have a image")
+function validateProduct(product){
+	assert(product.name, "product has to have a name")
+	assert(product.shortDescription, "product has to have a shortDescription")
+	assert(product.description, "product has to have a description")
+	assert(product.category, "product has to have a category")
+	assert(product.price, "product has to have a price")
+	assert(product.image, "product has to have a image")
 }
 
 export class Product {

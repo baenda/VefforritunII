@@ -17,7 +17,7 @@ export class Product {
     name;
     shortDescription;
     description;
-    category;
+    category = [];
     price;
     image;
     constructor(data){
@@ -82,7 +82,7 @@ export async function getProductsByCategory(category, page) {
     return products
 }
 
-export async function insertUser(product) {
+export async function insertProduct(product) {
 	if (product instanceof Product)
 	    await productDB.insertOne(product)
     else   

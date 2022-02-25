@@ -12,6 +12,7 @@ function validateSeller(seller){
 }
 
 export class Seller {
+    uid;
     name;
     passwordHash;
     address;

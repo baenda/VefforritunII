@@ -13,6 +13,7 @@ function validateUser(user){
 
 export class User {
     name;
+    email;
     passwordHash;
     address;
     zip;
@@ -20,6 +21,7 @@ export class User {
     cart = {};
     constructor(data){
         this.name = data.name;
+        this.email = data.email;
         this.address = data.address;
         this.zip = data.zip;
         this.region = data.region;

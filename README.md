@@ -6,6 +6,8 @@ Vefappið okkar snýst allt um að koma ferskum og góðum vörum frá böndum t
 Bændur sem vilja selja á síðunni skráir sig inn og skráir inn þær afurðir sem þau selja og hversu mikið þau eiga af þeim afurðum. Eina sem bóndinn þarf að gera er að taka saman pöntunum og skila þeim til sendingar og uppfæra hvað þau eiga mikið af vörum ef það breytist hvað þau eiga mikið.
 ## Stack
 Við notuðum MERN stack sem er þá samansettur af MongoDB, Express, React og Node.js
+## Mynd
+![](https://media.discordapp.net/attachments/928602988908531813/947811537005981726/bndasida.png?width=1207&height=600)
 
 
 

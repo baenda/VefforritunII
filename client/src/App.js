@@ -1,5 +1,6 @@
 import Header from './mainpage/header';
 import Main from './mainpage/Main';
+import Card from './mainpage/card'
 
 function App() {
   const sections = [
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
       <Header sections={sections} title="Bóndabær"/>
       <Main posts={testProducts} title="test"/>
+      <Card/>
     </div>
   );
 }

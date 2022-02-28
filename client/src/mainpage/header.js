@@ -31,11 +31,11 @@ function Header (props) {
           </IconButton>
           <Button variant="contained" size="small" color="secondary">
             <Link to="https://dev-5603y9-a.us.auth0.com/authorize?
-    response_type=code|token&
-    client_id=JK1alJD9ELz3x7vcGBfb2w3jVVx9Xzp4&
-    connection=CONNECTION&
-    redirect_uri=http://localhost:3000/callback&
-    state=STATE">
+            response_type=code|token&
+            client_id=JK1alJD9ELz3x7vcGBfb2w3jVVx9Xzp4&
+            connection=CONNECTION&
+            redirect_uri=http://localhost:3000/callback&
+            state=STATE">
             Sign in
             </Link>
           </Button>

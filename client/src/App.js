@@ -1,6 +1,5 @@
 import Header from './mainpage/header';
 import Main from './mainpage/Main';
-import Card from './mainpage/card'
 
 function App() {
   const sections = [
@@ -16,16 +15,18 @@ function App() {
     {title: "Afurðir", url: "afurdir"},
     {title: "Þorri", url: "thor"}
   ]
+
   const testProducts = [
     "test product\na",
-    "test product\na",
-    "test product\na"
+    "test product\nb",
+    "test product\nc",
+    "test product\nd"
   ]
   return (
-    <div className="App">
+    <div className="App" >
       <Header sections={sections} title="Bóndabær"/>
+      <img width="100%" height= "450" src="https://image.shutterstock.com/image-vector/rural-landscape-field-trees-grass-260nw-1694307613.jpg"/> 
       <Main posts={testProducts} title="test"/>
-      <Card/>
     </div>
   );
 }

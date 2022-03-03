@@ -4,6 +4,7 @@ import { getCollection } from './db.mjs';
 const productDB = getCollection("Products")
 
 function validateProduct(product){
+    // passar að user hefur allt essential
 	assert(product.name, "product has to have a name")
 	assert(product.shortDescription, "product has to have a shortDescription")
 	assert(product.description, "product has to have a description")
@@ -13,7 +14,8 @@ function validateProduct(product){
 }
 
 export class Product {
-    id = 0; //auto generated
+    // til að gera Product object
+    id = 0; // auto generated
     name;
     shortDescription;
     description;
@@ -32,64 +34,59 @@ export class Product {
 }
 
 export async function getProduct(id) {
-	const product = await userDB.find({
+    // finnur product með id
+	const product = await productDB.find({
 		id: id
 	}).next()
 	return new Product(product)
 }
 
-export async function searchProducts(query, page) {
-    page = page || 0
-    const pipeline = [
-        {
-            $search: {
-                "text": {
-                    "path": "name",
-                    "query": query,
-                    "fuzzy": {},
-                }
-            }
-        },
-        {
-            $limit: 20
-        },
-        {
-            $project: {
-                "id": 1,
-                "name": 1,
-                "price": 1,
-                "shortDescription": 1,
-                "description": 1,
-                "image": 1,
-                "category": 1
-            }
-        }
-    ]
-
-    const products = await productDB.aggregate(pipeline).skip(20*page).toArray();
-    
-    // remember to convert products list from Document[] -> Product[]
-    return products
-}
-
-export async function getProductsByCategory(category, page) {
-    page = page || 0
-    const products = await productDB.find({
-        category: category
-    }).skip(20*page).limit(20).toArray()
-
-    // remember to convert products list from Document[] -> Product[]
-    return products
-}
-
 export async function insertProduct(product) {
+    // bætir product í db
 	if (product instanceof Product)
+    // passar að það er product object
 	    await productDB.insertOne(product)
     else   
         error(`cannot insert product of type ${typeof(product)}`)
 }
 
 export async function createProduct(data) {
+    // validatar product
 	validateProduct(data)
 	return new Product(data)
 }
+getProduct(1).then((product) => { 
+    console.log(product)
+})
+getProduct(2).then((product) => { 
+    console.log(product)
+})
+
+
+/*
+createProduct({
+    name : "Nauta hakk",
+    shortDescription : "Hakk úr nautakjöti",
+    description : "Hakk úr nautakjöti",
+    category:  ["Naut", "Hakk", "Kjöt"],
+    price : "2000",
+    image : "https://www.kjothollin.is/wp-content/uploads/2020/04/nautahakk.jpg"
+}).then((product) => {
+    insertProduct(product)
+})
+
+createProduct({
+    name : "Geita breki",
+    shortDescription : "Geita salats ostur",
+    description : "Geita ostur fyrir salat, mjög líkur feta",
+    category:  ["Geit", "Ostur", "Afurð"],
+    price : "2300",
+    image : "https://geit.is/wp-content/uploads/j%C3%B3hanna-fetar-220x300.jpg"
+}).then((product) => {
+    insertProduct(product)
+})
+
+til að prufa kóðann láttu 
+node products.mjs
+í cmd
+*/

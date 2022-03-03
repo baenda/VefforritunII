@@ -1,25 +1,24 @@
-import bcrypt from "bcrypt"
 import assert from "assert"
 import { getCollection } from './db.mjs';
 
 const stockDB = getCollection("Stock")
 
 function validateStock(stock){
-	assert(stock.id, "stock has to have a id")
+	assert(stock.uid, "stock has to have a id")
 }
 
 export class Stock {
-    id = 0;
+    uid;
     products = {};
     constructor(data){
-        this.id = data.id;
+        this.uid = data.uid;
         this.products = data.products;
     }
 }
 
-export async function getStock(stockId) {
+export async function getStock(userId) {
 	const stock = await stockDB.find({
-		id: stockId
+		uid: userId
 	}).next()
 	return new Stock(stock)
 }
